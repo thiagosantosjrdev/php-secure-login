@@ -1,0 +1,384 @@
+
+/* ========================================
+   ADMIN DASHBOARD
+   Dark / Slate / Indigo / Cyan
+======================================== */
+
+:root {
+    --bg-page: #070b14;
+    --bg-card: rgba(17, 24, 39, 0.88);
+    --bg-input: #0f172a;
+
+    --text-main: #f8fafc;
+    --text-soft: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    --primary: #6366f1;
+    --primary-soft: rgba(99, 102, 241, 0.15);
+
+    --danger: #f87171;
+
+    --border-card: rgba(255, 255, 255, 0.09);
+    --border-subtle: rgba(255, 255, 255, 0.07);
+
+    --radius-md: 10px;
+    --radius-lg: 18px;
+}
+
+/* Reset isolado */
+
+.admin-page,
+.admin-page *,
+.admin-page *::before,
+.admin-page *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fundo */
+
+body.admin-body {
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 24px;
+
+    font-family: 'Inter', -apple-system,
+        BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    color: var(--text-main);
+    background-color: var(--bg-page);
+
+    background-image:
+        radial-gradient(
+            600px circle at var(--mouse-x, 50%)
+            var(--mouse-y, 50%),
+            rgba(99, 102, 241, 0.16),
+            transparent 45%
+        ),
+        radial-gradient(
+            rgba(99, 102, 241, 0.22) 1.25px,
+            transparent 1.25px
+        );
+
+    background-size: 100% 100%, 32px 32px;
+
+    overflow-x: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+/* Card principal */
+
+.admin-page {
+    width: 100%;
+    max-width: 900px;
+
+    position: relative;
+    z-index: 1;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.75);
+
+    overflow: hidden;
+
+    animation: adminEntrance 0.55s
+        cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* Cabeçalho */
+
+.admin-header {
+    padding: 2.25rem 2rem 1.5rem;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(17, 24, 39, 0.95),
+            rgba(99, 102, 241, 0.07)
+        );
+
+    border-bottom: 1px solid var(--border-card);
+}
+
+.admin-header h1 {
+    color: var(--text-main);
+
+    font-size: 1.8rem;
+    font-weight: 700;
+
+    letter-spacing: -0.035em;
+}
+
+.admin-header p {
+    margin-top: 0.55rem;
+
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Conteúdo */
+
+.admin-content {
+    padding: 1.5rem;
+}
+
+/* Tabela responsiva */
+
+.table-wrap {
+    width: 100%;
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-md);
+
+    background: rgba(15, 23, 42, 0.45);
+
+    scrollbar-width: thin;
+    scrollbar-color: #334155 transparent;
+}
+
+.table-wrap table {
+    width: 100%;
+    min-width: 600px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    color: var(--text-soft);
+    font-size: 0.92rem;
+}
+
+/* Cabeçalho da tabela */
+
+.table-wrap thead {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(99, 102, 241, 0.20),
+            rgba(56, 189, 248, 0.08)
+        );
+}
+
+.table-wrap th {
+    padding: 1rem 1.1rem;
+
+    text-align: left;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+
+    color: #c7d2fe;
+
+    border-bottom: 1px solid var(--border-card);
+    white-space: nowrap;
+}
+
+/* Células */
+
+.table-wrap td {
+    padding: 0.9rem 1.1rem;
+
+    border-bottom: 1px solid var(--border-subtle);
+
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.table-wrap tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-wrap tbody tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.table-wrap tbody tr:hover {
+    background: rgba(99, 102, 241, 0.09);
+}
+
+.table-wrap tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Identificação de permissões */
+
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 0.25rem 0.65rem;
+
+    border-radius: 999px;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
+
+.role-admin {
+    color: #c7d2fe;
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.role-user {
+    color: #94a3b8;
+    background: rgba(148, 163, 184, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+/* Rodapé */
+
+.admin-footer {
+    padding: 1.25rem 2rem 1.75rem;
+
+    border-top: 1px solid var(--border-card);
+
+    text-align: center;
+}
+
+.logout-link {
+    display: inline-block;
+
+    color: var(--danger);
+
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    transition:
+        color 0.2s ease,
+        letter-spacing 0.2s ease;
+}
+
+.logout-link:hover {
+    color: #ef4444;
+    letter-spacing: 0.04em;
+}
+
+.logout-link:focus-visible {
+    outline: 2px solid var(--danger);
+    outline-offset: 5px;
+}
+
+/* Animação */
+
+@keyframes adminEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Responsividade */
+
+@media (max-width: 650px) {
+
+    body.admin-body {
+        padding: 16px;
+        align-items: flex-start;
+    }
+
+    .admin-header {
+        padding: 1.75rem 1rem 1.25rem;
+    }
+
+    .admin-header h1 {
+        font-size: 1.45rem;
+    }
+
+    .admin-content {
+        padding: 1rem;
+    }
+
+    .table-wrap th,
+    .table-wrap td {
+        padding: 0.75rem;
+        font-size: 0.82rem;
+    }
+
+    .admin-footer {
+        padding: 1.1rem;
+    }
+}
+
+/* Acessibilidade */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .admin-page,
+    .admin-page * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+}
+
+/* ========================================
+   BOTÃO SAIR - PAINEL ADMINISTRATIVO
+======================================== */
+
+.admin-page .admin-footer .link-logout,
+.admin-page .admin-footer .link-logout:visited {
+    display: inline-block;
+
+    padding: 0.65rem 1rem;
+
+    color: #f87171;
+    background: transparent;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    text-decoration: none;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.admin-page .admin-footer .link-logout:hover {
+    color: #ef4444;
+    background: rgba(248, 113, 113, 0.10);
+}
+
+.admin-page .admin-footer .link-logout:focus-visible {
+    outline: 2px solid #f87171;
+    outline-offset: 4px;
+}
